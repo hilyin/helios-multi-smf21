@@ -1,0 +1,34 @@
+/* Helios Multi - golden pods (theme variant; helios.css holds the shared layout). */
+:root {
+	--helios-accent: #c0b040;
+}
+.helios_pod {
+	border-image-source: url(../images/pod/golden/frame.png);
+}
+/* Wide-screen only: below 720px helios.css uses flat bars instead of the caps and strips. */
+@media (min-width: 721px) {
+	#helios_stats {
+		background-image: url(../images/pod/golden/pod-stat-left.gif), url(../images/pod/golden/pod-stat-right.gif), url(../images/pod/golden/pod-stat-mid.gif);
+	}
+	#main_menu {
+		background-image: url(../images/pod/golden/pod-midbar.gif);
+	}
+	.helios_cap_left {
+		background: url(../images/pod/golden/pod-leftbar.gif) no-repeat;
+	}
+	.helios_cap_right {
+		background: url(../images/pod/golden/pod-rightbar.gif) no-repeat;
+	}
+	.navigate_section ul {
+		border-image-source: url(../images/pod/golden/board.png);
+	}
+	#helios_boardbottom {
+		border-image-source: url(../images/pod/golden/boardbottom.png);
+	}
+	#helios_ic_strip {
+		border-image-source: url(../images/pod/golden/icstrip.png);
+	}
+	#footer {
+		border-image-source: url(../images/pod/golden/footer.png);
+	}
+}

@@ -1,0 +1,1013 @@
+/* Helios Multi for SMF 2.1 - recreates the SMF 2.0 Helios Multi layout on 2.1 markup.
+   Helios Multi design and graphics Copyright (c) 2011 Blocweb (Bloc).
+   All Rights Reserved. BSD license - see ../licence.txt.
+   Loads after the theme's generated copies of the 2.1 stylesheets (see bin/helios-buildcss.py).
+   Colour-specific pod graphics live in index_<colour>.css (theme variants). */
+
+:root {
+	--helios-bg: #000;
+	--helios-row: #404040;
+	--helios-cell: #303030;
+	--helios-panel: #282525;
+	--helios-panel-dark: #202020;
+	--helios-border: #909090;
+	--helios-line: #555;
+	--helios-text: #fff;
+	--helios-soft: #d0d0d0;
+	--helios-muted: #b0b0b0;
+	--helios-stat: #88908a;
+	--helios-link: #e0ffe0;
+	--helios-visited: #e0e0ff;
+	--helios-hover: #fff080;
+	--helios-accent: #5070c0;
+}
+
+/* ---------- Page ---------- */
+html, body {
+	background: var(--helios-bg);
+	color: var(--helios-text);
+}
+body {
+	font: small helvetica, arial, sans-serif;
+	padding-top: 10px;
+}
+input, button, select, textarea {
+	font-family: helvetica, arial, sans-serif;
+}
+a:link {
+	color: var(--helios-link);
+}
+a:visited {
+	color: var(--helios-visited);
+}
+a:hover {
+	color: var(--helios-hover);
+	text-decoration: none;
+}
+hr {
+	border-color: var(--helios-line);
+	box-shadow: none;
+}
+#footerfix {
+	background: var(--helios-bg);
+}
+#helios_page {
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* ---------- Pods: the 9-slice frame used around header, news, content and Info Center ---------- */
+.helios_pod {
+	background: transparent;
+	border-style: solid;
+	border-width: 16px 13px 14px 20px;
+	border-image-slice: 16 27 14 22 fill;
+	border-image-repeat: stretch;
+	border-radius: 0;
+	box-shadow: none;
+	margin: 0 10px 0 0;
+	padding: 0 4px;
+}
+
+/* ---------- Colour picker + title ---------- */
+#helios_colours {
+	list-style: none;
+	margin: 2px 30px 2px 0;
+	padding: 0;
+	text-align: right;
+}
+#helios_colours li {
+	display: inline-block;
+	margin-left: 2px;
+}
+#helios_colours a {
+	display: block;
+	width: 11px;
+	height: 9px;
+	border: 1px solid #808080;
+}
+#helios_colours a.active, #helios_colours a:hover {
+	border-color: #fff;
+}
+.helios_brown { background: #503000; }
+.helios_red { background: #600000; }
+.helios_golden { background: #908000; }
+.helios_green { background: #005000; }
+.helios_blue { background: #000040; }
+.helios_silver { background: #606060; }
+/* The old theme showed no title (only the link tree); keep the #top anchor for "Go up". */
+h1.forumtitle {
+	position: absolute;
+	left: -9999px;
+	margin: 0;
+}
+
+/* ---------- User pod (2.1 user menu / guest login / search) ---------- */
+#top_section {
+	background: transparent;
+	color: var(--helios-soft);
+	min-height: 0;
+	box-shadow: none;
+}
+#top_section .inner_wrap {
+	width: auto;
+	max-width: none;
+	padding: 4px 4px 2px;
+	background: transparent;
+}
+#top_info > li > a, #top_info .welcome, #top_info .textmenu {
+	color: var(--helios-soft);
+	font-size: 8pt;
+}
+#top_info > li > a:hover, #top_info > li > a.active, #top_info > li > a.open {
+	background: var(--helios-cell);
+	color: var(--helios-hover);
+}
+#top_info .amt, .amt {
+	background: var(--helios-accent);
+	color: #fff;
+}
+#top_section .unread_links {
+	clear: both;
+	list-style: none;
+	margin: 0;
+	padding: 2px 8px 0;
+	font-size: 8pt;
+}
+#top_section .unread_links li {
+	display: inline;
+	margin-right: 12px;
+}
+#search_form input[type="search"], #search_form select {
+	font-size: 8pt;
+}
+
+/* ---------- News pod ---------- */
+#helios_news {
+	padding: 2px 10px;
+	text-align: center;
+	color: var(--helios-soft);
+	font-size: 8pt;
+}
+
+/* ---------- Stats pod: STATS cap | totals ... time | TIME cap ---------- */
+#helios_stats {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 44px;
+	padding: 0 135px 0 124px;
+	background-repeat: no-repeat, no-repeat, repeat-x;
+	background-position: left top, right top, left top;
+	color: var(--helios-stat);
+	font: 8pt tahoma, helvetica, sans-serif;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#helios_stats .helios_stat_text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#helios_stats a, #helios_stats time {
+	color: var(--helios-muted);
+	font-weight: bold;
+}
+#helios_stats time {
+	font-weight: normal;
+	padding-left: 10px;
+}
+
+/* ---------- Menu bar: leftbar | text menu on menuback | rightbar, centred on black ---------- */
+#helios_menubar {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	background: var(--helios-bg);
+	margin-left: 20px;
+	height: 22px;
+}
+.helios_cap {
+	display: block;
+	height: 22px;
+	flex: none;
+}
+.helios_cap_left {
+	width: 114px;
+}
+.helios_cap_right {
+	width: 84px;
+}
+#main_menu {
+	float: none;
+	margin: 0;
+	padding: 0;
+	background-repeat: repeat-x;
+	background-color: var(--helios-bg);
+	border-radius: 0;
+	height: 22px;
+}
+#main_menu .dropmenu {
+	background: url(../images/menuback.gif) 0 0 no-repeat;
+	padding: 0 10px;
+	height: 22px;
+	white-space: nowrap;
+}
+#main_menu .dropmenu > li {
+	display: flex;
+	align-items: center;
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 22px;
+}
+/* Separator after every item (not before), so a wrapped second row doesn't start with a pipe. */
+#main_menu .dropmenu > li:not(:last-child)::after {
+	content: "|";
+	color: var(--helios-soft);
+	font: 10px tahoma, sans-serif;
+	padding: 0 2px;
+}
+#main_menu .dropmenu > li > a .textmenu {
+	font: inherit;
+}
+#main_menu .dropmenu > li > a, #main_menu .dropmenu > li > a:visited {
+	display: inline-block;
+	background: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: var(--helios-soft);
+	font: 10px tahoma, sans-serif;
+	text-transform: uppercase;
+	padding: 0 4px;
+	line-height: 22px;
+}
+#main_menu .dropmenu > li > a > img, #main_menu .dropmenu > li > a > .main_icons {
+	display: none;
+}
+#main_menu .dropmenu > li > a .amt {
+	font-size: 9px;
+	padding: 0 4px;
+}
+#main_menu .dropmenu > li > a.active, #main_menu .dropmenu > li:hover > a, #main_menu .dropmenu > li > a:hover, #main_menu .dropmenu > li > a:focus, #main_menu .dropmenu > li > a.open {
+	background: none;
+	border: none;
+	box-shadow: none;
+	color: var(--helios-hover);
+}
+#main_menu .dropmenu li a.active {
+	font-weight: bold;
+}
+.dropmenu li ul, .top_menu, #profile_menu, #pm_menu, #alerts_menu, .popup_content, .popup_window, .dropmenu li ul ul {
+	background: var(--helios-panel-dark);
+	border: 1px solid var(--helios-border);
+	color: var(--helios-text);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+	border-radius: 0;
+}
+.dropmenu li li a, .dropmenu li li a:visited, .top_menu a, .top_menu a:visited {
+	color: var(--helios-soft);
+	background: none;
+	border: none;
+}
+.dropmenu li li a:hover, .dropmenu li li:hover > a, .top_menu a:hover, .top_menu .unread {
+	background: var(--helios-cell);
+	color: var(--helios-hover);
+}
+
+/* ---------- Link tree in the board strip ---------- */
+.navigate_section {
+	padding: 0;
+	margin: 0;
+	background: transparent;
+}
+.navigate_section ul {
+	display: flex;
+	align-items: flex-end;
+	height: 54px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0 0 6px;
+	background: transparent;
+	border: none;
+	border-style: solid;
+	border-width: 0 79px 0 72px;
+	border-image-slice: 0 79 0 72 fill;
+	border-image-repeat: stretch;
+	border-radius: 0;
+	box-shadow: none;
+	font: 8pt helvetica, arial, sans-serif;
+}
+.navigate_section ul li, .navigate_section ul li a, .navigate_section ul li a:visited {
+	color: #e0e0e0;
+	font-size: 8pt;
+	text-shadow: none;
+}
+.navigate_section ul li a:hover {
+	color: var(--helios-hover);
+}
+.navigate_section ul li .dividers {
+	color: var(--helios-muted);
+}
+
+/* ---------- Content area ---------- */
+#content_section {
+	background: transparent;
+	margin: 0;
+	padding: 0;
+}
+#content_section.helios_pod {
+	margin-right: 10px;
+	padding: 0 4px;
+}
+#main_content_section {
+	padding: 0 3px 10px;
+	background: transparent;
+}
+
+/* ---------- Category / title bars: the grey pod gradients from the old style.css ---------- */
+.cat_bar, div.cat_bar {
+	background: #383838 url(../images/pod/catbg.gif) repeat-x;
+	border: none;
+	border-radius: 0;
+	margin-top: 4px;
+}
+.cat_bar.collapsed {
+	border-radius: 0;
+}
+.title_bar, div.title_bar {
+	background: #303030 url(../images/pod/titlebg.gif) repeat-x;
+	border: none;
+	border-radius: 0;
+}
+.cat_bar h3, .catbg, h3.catbg, .title_bar h3, .title_bar h4, .titlebg, h3.titlebg, h4.titlebg {
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 4px 10px;
+	min-height: 0;
+	line-height: 1.6;
+	text-shadow: none;
+	background: none;
+}
+.title_bar h3, .title_bar h4, .titlebg, h4.titlebg {
+	color: #e0e0e0;
+}
+.cat_bar a, .cat_bar a:visited, .title_bar a, .title_bar a:visited {
+	color: #fff;
+}
+.cat_bar a:hover, .title_bar a:hover {
+	color: #f0e080;
+}
+
+/* ---------- Panels: windowbg #303030 / windowbg2 #404040 like the old theme ---------- */
+.windowbg, .up_contain, .roundframe, .generic_list_wrapper, .bg.even, .bg.odd,
+.windowbg2, .board_stats, .sub_bar, #content_section div.roundframe, .unread_topics .windowbg {
+	color: var(--helios-text);
+	border-color: #222;
+	border-radius: 0;
+	box-shadow: none;
+}
+.windowbg:nth-of-type(even), .bg.even {
+	background: var(--helios-row);
+}
+.description, .information, .descbox, .plainbox, .padding.description {
+	background: #444;
+	border: 1px solid #666;
+	color: var(--helios-text);
+	border-radius: 0;
+}
+.sticky, .windowbg.sticky {
+	background: #4a4530;
+}
+.locked, .windowbg.locked {
+	background: #35353d;
+}
+.approvetopic, .approvebg, .windowbg.approvetopic, .windowbg.approvebg {
+	background: #4a2a2a;
+}
+.noticebox, .infobox, .errorbox {
+	border-radius: 0;
+	box-shadow: none;
+}
+.noticebox {
+	background: #4a4530;
+	border-color: #a09050;
+	color: #f0f0d0;
+}
+.errorbox {
+	background: #401818;
+	border-color: #a04040;
+	color: #f0c8c8;
+}
+.errorbox h3, .errorbox h3 a, .errorbox a, .errorbox strong {
+	color: #ff9a9a;
+}
+.infobox {
+	background: #1e3a1e;
+	border-color: #407040;
+	color: #d0f0d0;
+}
+.smalltext, .board_description, .moderators, .lastpost, .children, .board_stats p,
+.topic_details, .message_index_title, .info .subject + p, .floatleft .smalltext {
+	color: var(--helios-soft);
+}
+.lastpost a, .children a, .board_description a {
+	color: var(--helios-link);
+}
+
+/* ---------- Board index ---------- */
+#boardindex_table .info a.subject, #boardindex_table .info a.subject:visited,
+.boardindex_table .board_name a {
+	color: var(--helios-link);
+	font-weight: bold;
+}
+#boardindex_table .info a.subject:hover {
+	color: var(--helios-hover);
+}
+#boardindex_table .up_contain, #boardindex_table .windowbg {
+	background: var(--helios-row);
+	margin-top: 1px;
+}
+#boardindex_table .board_stats {
+	color: var(--helios-soft);
+	border-color: #222;
+}
+/* Old orb icons instead of the 2.1 sprite (index.css: .board_icon a { background: url(boardicons.png) 0 0 / 90px }) */
+.board_icon a, .board_icon a.board_on, .board_icon a.board_on2, .board_icon a.board_off, .board_icon a.board_redirect {
+	background: url(../images/board_off.png) center no-repeat;
+	background-size: auto;
+}
+.board_icon a.board_on {
+	background-image: url(../images/board_on.png);
+}
+.board_icon a.board_on2 {
+	background-image: url(../images/board_on.png);
+}
+.board_icon a.board_redirect {
+	background-image: url(../images/redirect.gif);
+}
+#helios_boardbottom {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	height: 78px;
+	box-sizing: border-box;
+	margin: 0 0 0 5px;
+	border-style: solid;
+	border-width: 0 79px 0 72px;
+	border-image-slice: 0 79 0 72 fill;
+	border-image-repeat: stretch;
+}
+#helios_boardbottom .mark_read {
+	margin: 0;
+	padding: 0 0 18px;
+}
+#info_center {
+	background: transparent;
+	border: none;
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+}
+#helios_ic_strip {
+	height: 64px;
+	box-sizing: border-box;
+	margin-left: 4px;
+	padding: 12px 0 0;
+	border-style: solid;
+	border-width: 0 79px 0 72px;
+	border-image-slice: 0 79 0 72 fill;
+	border-image-repeat: stretch;
+	font-weight: bold;
+}
+#helios_ic_strip a, #helios_ic_strip a:visited {
+	color: #fff;
+}
+#info_center .sub_bar, #info_center .title_bar {
+	background: #303030 url(../images/pod/titlebg.gif) repeat-x;
+}
+#info_center .windowbg, #upshrink_stats > div, #upshrink_stats p {
+	background: var(--helios-cell);
+}
+
+/* ---------- Message index / topics ---------- */
+.table_grid th, .table_grid thead th, .table_grid tr.title_bar, #messageindex .title_bar, #topic_header {
+	background: #303030 url(../images/pod/titlebg.gif) repeat-x;
+	color: #e0e0e0;
+}
+.pagesection, .pagelinks {
+	color: var(--helios-text);
+}
+.pagelinks .current_page {
+	color: var(--helios-hover);
+	font-weight: bold;
+}
+.nav_page, .expand_pages, .pages {
+	background: var(--helios-panel-dark);
+	border-color: #666;
+	color: var(--helios-soft);
+}
+#forumposts .windowbg, .post_wrapper {
+	border-color: #222;
+}
+.poster h4 a, .poster h4 a:visited {
+	color: var(--helios-hover);
+}
+.poster li, .postarea .keyinfo .smalltext, .moderatorbar, .signature, .attachments, .under_message {
+	color: var(--helios-soft);
+	border-color: var(--helios-line);
+}
+.inner, .list_posts {
+	color: var(--helios-text);
+	border-color: var(--helios-line);
+}
+.quickbuttons, .quickbuttons li ul, .post_options ul {
+	background: var(--helios-panel-dark);
+	border-color: #666;
+}
+.quickbuttons li a, .quickbuttons > li > a, .quickbuttons li ul li a {
+	color: var(--helios-soft);
+}
+.quickbuttons li a:hover, .quickbuttons li:hover > a {
+	background: var(--helios-cell);
+	color: var(--helios-hover);
+}
+
+/* ---------- BBC ---------- */
+blockquote.bbc_standard_quote, blockquote.bbc_alternate_quote {
+	background: #262626;
+	border: 1px solid #555;
+	border-left: 3px solid var(--helios-accent);
+	color: var(--helios-text);
+}
+blockquote.bbc_alternate_quote {
+	background: #1e1e1e;
+}
+blockquote cite, .codeheader, .quoteheader {
+	color: var(--helios-muted);
+}
+code.bbc_code, .bbc_code {
+	background: #141414;
+	border: 1px solid #555;
+	color: #c0e0c0;
+}
+.bbc_link:link, .bbc_link:visited {
+	color: var(--helios-link);
+	border-bottom-color: var(--helios-line);
+}
+.bbc_table td {
+	color: var(--helios-text);
+}
+.spoiler, .bbc_spoiler {
+	background: var(--helios-panel-dark);
+}
+
+/* ---------- Calendar (calendar.css is pastel on white) ---------- */
+#month_grid table, #main_grid table {
+	background: var(--helios-cell);
+	border-color: var(--helios-line);
+}
+#month_grid th.days, #month_grid th:first-child, #month_grid td.weeks,
+#main_grid th.days, #main_grid th:first-child, #main_grid td.weeks {
+	background: var(--helios-panel-dark);
+	color: var(--helios-soft);
+}
+#month_grid td, #main_grid td {
+	border-color: #222;
+	color: var(--helios-text);
+}
+#month_grid td.days a, #month_grid td.days a:visited, #main_grid td.days a, #main_grid td .day_text {
+	color: var(--helios-link);
+}
+#main_grid td.disabled, #month_grid td.disabled {
+	background: #1a1a1a;
+	border-color: #222;
+}
+#main_grid td.events, #month_grid td.events {
+	background: #24402a;
+}
+#main_grid td.holidays, #month_grid td.holidays {
+	background: #24304a;
+}
+#main_grid td.birthdays, #month_grid td.birthdays {
+	background: #36284a;
+}
+#main_grid td.events:hover, #month_grid td.events:hover, #month_grid td.calendar_today.events {
+	background: #2e5236;
+}
+#main_grid td.holidays:hover, #month_grid td.holidays:hover, #month_grid td.calendar_today.holidays {
+	background: #2e3c5c;
+}
+#main_grid td.birthdays:hover, #month_grid td.birthdays:hover, #month_grid td.calendar_today.birthdays {
+	background: #44325c;
+}
+.calendar_today, td.days:hover, #month_grid td.calendar_today, #main_grid td.calendar_today {
+	background: #505050;
+}
+#month_grid td.days a:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+.birthday, .holiday > span, .holiday, .event_title, #main_grid .event, .event_title + a {
+	color: var(--helios-link);
+}
+.calendar_top {
+	background: var(--helios-cell);
+}
+
+/* ---------- Forms and buttons ---------- */
+input, select, textarea,
+input[type="text"], input[type="password"], input[type="search"], input[type="email"],
+input[type="number"], input[type="url"], input[type="date"], input[type="time"] {
+	background: #1a1a1a;
+	border: 1px solid #666;
+	color: var(--helios-text);
+	border-radius: 0;
+}
+input:focus, select:focus, textarea:focus {
+	border-color: var(--helios-accent);
+	box-shadow: 0 0 3px var(--helios-accent);
+	outline: none;
+}
+input[disabled], select[disabled], textarea[disabled] {
+	background: #2a2a2a;
+	color: #777;
+}
+.button, a.button, .buttonlist > .button, input[type="submit"], input[type="button"], button {
+	background: linear-gradient(#4a4a4a, #2a2a2a);
+	border: 1px solid #707070;
+	border-radius: 0;
+	color: #e0e0e0;
+	box-shadow: none;
+}
+.button:hover, .button:focus, a.button:hover, .buttonlist > .button:hover,
+input[type="submit"]:hover, input[type="button"]:hover, button:hover,
+.buttonlist > .button.active, .button.active {
+	background: linear-gradient(#5a5a5a, #383838);
+	border-color: var(--helios-accent);
+	color: var(--helios-hover);
+}
+.sceditor-container, .sceditor-toolbar, div.sceditor-group {
+	background: var(--helios-panel-dark);
+	border-color: #555;
+}
+
+/* ---------- Popups / sidebars ---------- */
+.popup_heading {
+	background: #303030 url(../images/pod/titlebg.gif) repeat-x;
+	color: #e0e0e0;
+}
+.popup_container {
+	background: rgba(0, 0, 0, 0.7);
+}
+#adm_submenus, .generic_menu, #admin_menu {
+	background: transparent;
+}
+.dropmenu li ul li a.chosen, #adm_submenus .dropmenu li a.active {
+	color: var(--helios-hover);
+	font-weight: bold;
+}
+
+/* ---------- Footer: the max-bottom strip ---------- */
+#footer {
+	background: transparent;
+	border: none;
+	height: 46px;
+	box-sizing: border-box;
+	margin: 0 10px 0 8px;
+	padding: 0;
+	border-style: solid;
+	border-width: 0 79px 0 72px;
+	border-image-slice: 0 79 0 72 fill;
+	border-image-repeat: stretch;
+	color: var(--helios-muted);
+}
+
+#footer ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#footer .copyright {
+	text-align: center;
+}
+#footer p {
+	text-align: right;
+	margin: 2px 0 0;
+}
+#footer a, #footer a:visited {
+	color: var(--helios-muted);
+}
+#footer a:hover {
+	color: var(--helios-hover);
+}
+
+/* ---------- Small screens: drop the wide caps that don't fit ---------- */
+@media (max-width: 720px) {
+	#helios_page {
+		width: auto;
+		margin: 0 4px;
+	}
+	.helios_pod {
+		border-width: 8px 10px 7px 10px;
+		margin-right: 0;
+	}
+	#helios_stats {
+		display: block;
+		height: auto;
+		padding: 4px 8px;
+		background: var(--helios-panel-dark);
+		white-space: normal;
+	}
+	#helios_stats time {
+		display: block;
+		padding: 0;
+	}
+	#helios_menubar {
+		margin: 0;
+		height: auto;
+		justify-content: flex-start;
+	}
+	.helios_cap {
+		display: none;
+	}
+	.navigate_section ul, #helios_boardbottom, #helios_ic_strip, #footer {
+		border-width: 0;
+		min-height: 0;
+		padding: 6px;
+		background: var(--helios-panel-dark);
+		margin: 0;
+	}
+}
+
+/* ---------- Board / topic header: the old theme had no box here, just text ---------- */
+#display_head, #display_head.information {
+	background: none;
+	border: none;
+	padding: 4px 0;
+	margin: 0;
+}
+#display_head h2 {
+	color: #fff;
+	font-size: 1.4em;
+}
+#display_head p {
+	color: var(--helios-soft);
+}
+
+/* ---------- Message index: one background per row, no separate stats cell ---------- */
+#topic_container .windowbg .board_stats, #topic_container .board_stats, .topic_table .stats {
+	background: none;
+	border: none;
+	box-shadow: none;
+}
+
+/* ---------- No avatar = no image (SMF 2.1 always substitutes avatars/default.png; 2.0 showed nothing) ---------- */
+img.avatar[src$="/avatars/default.png"],
+li.avatar:has(img[src$="/avatars/default.png"]) {
+	display: none;
+}
+
+/* No divider lines either side of the board stats */
+.boardindex_table .board_stats p {
+	border-left: none;
+	border-right: none;
+}
+
+/* ---------- Admin / profile / PM: 2.0-style left sidebar (GenericMenu.template.php) ---------- */
+#helios_menu_layout {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+}
+#helios_sidebar {
+	flex: 0 0 220px;
+}
+#helios_menu_layout > #admin_content {
+	flex: 1;
+	min-width: 0;
+}
+#helios_sidebar .cat_bar {
+	margin-top: 8px;
+}
+#helios_sidebar .cat_bar:first-child {
+	margin-top: 0;
+}
+#helios_sidebar .cat_bar h3 {
+	font-size: 1.15em;
+}
+.helios_sidebar_list {
+	list-style: none;
+	margin: 0;
+	padding: 8px 16px 10px;
+	background: var(--helios-cell);
+}
+.helios_sidebar_list li {
+	line-height: 1.5;
+}
+.helios_sidebar_list a, .helios_sidebar_list a:visited {
+	color: #fff;
+}
+.helios_sidebar_list a:hover {
+	color: var(--helios-hover);
+}
+.helios_sidebar_list a.chosen {
+	color: #d8dcff;
+	font-weight: bold;
+}
+/* The 2.1 dropdown version of the same menu is only for small screens. */
+@media (min-width: 721px) {
+	#genericmenu {
+		display: none;
+	}
+}
+@media (max-width: 720px) {
+	#helios_menu_layout {
+		display: block;
+	}
+	#helios_sidebar {
+		display: none;
+	}
+}
+
+/* Sub-tabs (Routine / Database / ...): plain links, the current one in a rounded pill. */
+#adm_submenus {
+	padding: 8px 40px;
+	background: none;
+}
+#adm_submenus .dropmenu {
+	background: none;
+	border: none;
+}
+#adm_submenus .dropmenu li a, #adm_submenus .dropmenu li a:visited {
+	background: none;
+	border: none;
+	box-shadow: none;
+	color: #fff;
+	font-size: 1.1em;
+	text-transform: none;
+	padding: 3px 8px;
+	border-radius: 10px;
+}
+#adm_submenus .dropmenu li a:hover {
+	color: var(--helios-hover);
+}
+#adm_submenus .dropmenu li a.active {
+	background: #3c3a38;
+	font-weight: bold;
+	color: #fff;
+}
+
+/* ---------- 2.0-style header greeting (replaces 2.1's user/PM/alert dropdowns and search) ---------- */
+.helios_user {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	padding: 6px 16px 4px;
+}
+.helios_avatar img.avatar {
+	display: block;
+	max-width: 100px;
+	max-height: 100px;
+	width: auto;
+	height: auto;
+	border-radius: 0;
+}
+.helios_greeting {
+	color: #fff;
+	font: 9pt verdana, helvetica, sans-serif;
+	line-height: 1.35;
+}
+
+/* ---------- Menu bar: collapse arrow and the trailing "|" after the last item ---------- */
+#upshrink {
+	display: block;
+	flex: none;
+	align-self: flex-start;
+	width: 26px;
+	height: 21px;
+	margin: 0 2px 0 0;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+/* ---------- Footer: lighter centre panel behind the text, badges underneath ---------- */
+/* The footer strip; its inner panel reaches ~24px into each end cap. */
+#footer {
+	height: 46px;
+	min-height: 0;
+	box-sizing: border-box;
+}
+#footer .helios_footer_text {
+	box-sizing: border-box;
+	height: 35px;
+	margin: 0px -23px 0 -24px;
+	padding: 3px 28px;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	column-gap: 16px;
+	background: rgba(255, 255, 255, 0.22);
+	border-radius: 6px;
+	color: #e6e6e6;
+	font-size: 8pt;
+	line-height: 13px;
+	overflow: hidden;
+}
+#footer .helios_footer_text ul {
+	display: contents;
+}
+#footer .helios_footer_text .copyright {
+	grid-column: 1;
+	grid-row: 1 / span 2;
+	text-align: center;
+}
+#footer .helios_footer_text .floatright {
+	float: none;
+	grid-column: 2;
+	grid-row: 1;
+	text-align: right;
+}
+#footer .helios_footer_text p {
+	grid-column: 2;
+	margin: 0;
+	text-align: right;
+}
+#footer .helios_footer_text a, #footer .helios_footer_text a:visited {
+	color: #fff;
+}
+#helios_badges {
+	text-align: center;
+	padding: 4px 0 12px;
+}
+#helios_badges a {
+	margin: 0 6px;
+}
+#helios_badges img {
+	vertical-align: middle;
+}
+@media (max-width: 720px) {
+	#upshrink {
+		display: none;
+	}
+	.helios_avatar img.avatar {
+		max-width: 60px;
+		max-height: 60px;
+	}
+}
+
+/* Phones use flat bars instead of the strip images, so the strips can grow with their content again. */
+@media (max-width: 720px) {
+	.navigate_section ul, #helios_boardbottom, #helios_ic_strip, #footer {
+		height: auto;
+	}
+	#footer .helios_footer_text {
+		height: auto;
+		margin: 0;
+		display: block;
+	}
+}
+
+#upshrink_stats {
+	margin-top: 0;
+}
+
+#footer {
+	position: relative;
+}
+#footer .helios_footer_text {
+	position: relative;
+	top: 6px;
+}
+
+/* Upcoming events line above the board index (from the 2.0 theme) */
+/* Red line; only today's events are big + underlined. Links stay red when visited. */
+.helios_events { padding: 0 10px 8px; color: red; line-height: 1.3; }
+.helios_events .event { padding-left: 10px; }
+p.helios_events a:link, p.helios_events a:visited, p.helios_events a:hover { color: red; }
+.helios_events strong { color: red; font-size: 24px; text-decoration: underline; }
+.helios_events .helios_sword { text-decoration: none; }
+.helios_events .helios_sword.today { font-size: 24px; }
+
+/* Long (logged-in) menus wrap to a second row below ~1060px. Let the bar grow with them: menuback.gif is
+   50px tall (rounded top-left corner, then plain black), so two rows of 22px still sit on the box.
+   561px+ because SMF only swaps in the "Main Menu" popup toggle at 560px and below. */
+@media (min-width: 561px) {
+	#helios_menubar, #main_menu {
+		height: auto;
+	}
+	#main_menu .dropmenu {
+		display: flow-root;
+		height: auto;
+		min-height: 22px;
+	}
+}
+
+/* In the phone "Main Menu" popup the items are a vertical list: no separators. */
+@media (max-width: 560px) {
+	#main_menu .dropmenu > li:not(:last-child)::after {
+		content: none;
+	}
+}

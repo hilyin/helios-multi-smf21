@@ -1,0 +1,34 @@
+/* Helios Multi - red pods (theme variant; helios.css holds the shared layout). */
+:root {
+	--helios-accent: #c04040;
+}
+.helios_pod {
+	border-image-source: url(../images/pod/red/frame.png);
+}
+/* Wide-screen only: below 720px helios.css uses flat bars instead of the caps and strips. */
+@media (min-width: 721px) {
+	#helios_stats {
+		background-image: url(../images/pod/red/pod-stat-left.gif), url(../images/pod/red/pod-stat-right.gif), url(../images/pod/red/pod-stat-mid.gif);
+	}
+	#main_menu {
+		background-image: url(../images/pod/red/pod-midbar.gif);
+	}
+	.helios_cap_left {
+		background: url(../images/pod/red/pod-leftbar.gif) no-repeat;
+	}
+	.helios_cap_right {
+		background: url(../images/pod/red/pod-rightbar.gif) no-repeat;
+	}
+	.navigate_section ul {
+		border-image-source: url(../images/pod/red/board.png);
+	}
+	#helios_boardbottom {
+		border-image-source: url(../images/pod/red/boardbottom.png);
+	}
+	#helios_ic_strip {
+		border-image-source: url(../images/pod/red/icstrip.png);
+	}
+	#footer {
+		border-image-source: url(../images/pod/red/footer.png);
+	}
+}

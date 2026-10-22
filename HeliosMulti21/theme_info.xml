@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<theme-info xmlns="http://www.simplemachines.org/xml/theme-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>hilyin:helios_multi_21</id>
+	<name>Helios Multi</name>
+	<!-- Original theme (SMF 2.0, id bloc:heliosmulti, v2.0) by Bloc. Copyright (c) 2011 Blocweb,
+	     BSD license: see licence.txt. Ported to SMF 2.1 by hilyin in 2026
+	     (https://github.com/hilyin/helios-multi-smf21). -->
+	<author name="Bloc">bloczone@gmail.com</author>
+	<version>2.1.0</version>
+	<install for="2.1 - 2.1.99" />
+	<layers>html,body</layers>
+	<templates>index</templates>
+	<images>images</images>
+</theme-info>
