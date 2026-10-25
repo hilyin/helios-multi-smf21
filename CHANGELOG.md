@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.2 (2026-10-25)
+
+### Fixed
+- **Header login after using the login popup:** the header form failed with "Token verification
+  failed" if the login popup (or a login page in another tab) had been opened first, because SMF
+  keeps only one login token per visitor. The form now fetches a fresh token the same way the popup
+  does just before it submits.
+
 ## 2.1.1 (2026-10-25)
 
 ### Removed

@@ -296,6 +296,7 @@ function template_body_above()
 				</div>';
 	}
 	elseif (empty($maintenance))
+	{
 		echo '
 				<div class="helios_greeting">
 					', $txt['hello_guest'], ' <strong>', $txt['guest_title'], '</strong>. Please <a href="', $scripturl, '?action=login" onclick="return reqOverlayDiv(this.href, ', JavaScriptEscape($txt['login']), ', \'login\');">login</a>', $context['can_register'] ? ' or <a href="' . $scripturl . '?action=signup">register</a>' : '', '.
@@ -308,6 +309,36 @@ function template_body_above()
 						<input type="hidden" name="', $context['login_token_var'], '" value="', $context['login_token'], '">
 					</form>
 				</div>';
+
+		// SMF keeps one login token per visitor, and opening the login popup (or a login page in another
+		// tab) replaces it, which made the header form fail with "Token verification failed". So fetch a
+		// fresh token, the same way the popup does, just before submitting. If that fails, submit as is.
+		addInlineJavaScript(<<<'JS'
+	$('form.helios_quicklogin').on('submit', function (e) {
+		var form = this;
+		if (form.dataset.fresh)
+			return;
+		e.preventDefault();
+		$.ajax({
+			url: smf_prepareScriptUrl(smf_scripturl) + 'action=login;ajax',
+			headers: {'X-SMF-AJAX': 1},
+			dataType: 'html',
+			timeout: 5000
+		}).done(function (html) {
+			var fresh = $('<div>').append($.parseHTML(html)).find('#frmLogin input[type=hidden]');
+			if (fresh.length) {
+				$(form).find('input[type=hidden]').remove();
+				fresh.each(function () {
+					$('<input type="hidden">').attr('name', this.name).val(this.value).appendTo(form);
+				});
+			}
+		}).always(function () {
+			form.dataset.fresh = 1;
+			form.submit();
+		});
+	});
+JS, true);
+	}
 	else
 		echo '
 				<div class="helios_greeting">', sprintf($txt['welcome_guest'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return true;'), '</div>';
