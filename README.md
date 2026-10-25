@@ -30,7 +30,6 @@ Under **Themes and Layout → Theme settings → Helios Multi**, along with SMF'
 | Setting | What it does |
 |---|---|
 | Helios: extra menu link text / URL | Adds one custom link to the main menu after Calendar, for logged-in members. For example, a guild DKP or attendance site. Leave either one empty to hide it. |
-| Helios: groups that see the big Upcoming Events line | Comma-separated membergroup IDs. Admins always see it. Leave it empty to show it to everyone who can see the calendar, as the 2.0 theme did. |
 
 If your forum root has a `favicon.png` or an `apple-touch-icon.png`, the theme links them automatically.
 

@@ -248,12 +248,6 @@ function template_settings()
 			'label' => 'Helios: extra menu link URL',
 			'type' => 'url',
 		),
-		array(
-			'id' => 'helios_events_groups',
-			'label' => 'Helios: groups that see the big Upcoming Events line',
-			'description' => 'Comma-separated membergroup IDs (admins always see it). Empty = everyone who can see the calendar.',
-			'type' => 'text',
-		),
 );
 }
 

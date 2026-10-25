@@ -573,8 +573,8 @@ code.bbc_code, .bbc_code {
 	background: var(--helios-panel-dark);
 	color: var(--helios-soft);
 }
-#month_grid td, #main_grid td {
-	border-color: #222;
+#month_grid td, #main_grid td, #month_grid td.days, #main_grid td.days {
+	border-color: #444;
 	color: var(--helios-text);
 }
 #month_grid td.days a, #month_grid td.days a:visited, #main_grid td.days a, #main_grid td .day_text {
@@ -582,7 +582,14 @@ code.bbc_code, .bbc_code {
 }
 #main_grid td.disabled, #month_grid td.disabled {
 	background: #1a1a1a;
-	border-color: #222;
+	border-color: #444;
+}
+/* One flat colour for plain days (no .windowbg:nth-of-type checkerboard); must come before the events/holidays/birthdays colours. */
+#main_grid td.windowbg, #month_grid td.windowbg {
+	background: var(--helios-cell);
+}
+#main_grid td.windowbg:hover, #month_grid td.windowbg:hover {
+	background: #505050;
 }
 #main_grid td.events, #month_grid td.events {
 	background: #24402a;
@@ -982,15 +989,6 @@ li.avatar:has(img[src$="/avatars/default.png"]) {
 	top: 6px;
 }
 
-/* Upcoming events line above the board index (from the 2.0 theme) */
-/* Red line; only today's events are big + underlined. Links stay red when visited. */
-.helios_events { padding: 0 10px 8px; color: red; line-height: 1.3; }
-.helios_events .event { padding-left: 10px; }
-p.helios_events a:link, p.helios_events a:visited, p.helios_events a:hover { color: red; }
-.helios_events strong { color: red; font-size: 24px; text-decoration: underline; }
-.helios_events .helios_sword { text-decoration: none; }
-.helios_events .helios_sword.today { font-size: 24px; }
-
 /* Long (logged-in) menus wrap to a second row below ~1060px. Let the bar grow with them: menuback.gif is
    50px tall (rounded top-left corner, then plain black), so two rows of 22px still sit on the box.
    561px+ because SMF only swaps in the "Main Menu" popup toggle at 560px and below. */
@@ -1010,4 +1008,22 @@ p.helios_events a:link, p.helios_events a:visited, p.helios_events a:hover { col
 	#main_menu .dropmenu > li:not(:last-child)::after {
 		content: none;
 	}
+}
+
+/* Guest quick login in the header (2.0 style) */
+.helios_quicklogin {
+	display: table; /* own line under the greeting, but only as wide as its fields */
+	margin-top: 4px;
+}
+.helios_quicklogin input[type="text"], .helios_quicklogin input[type="password"] {
+	width: 9em;
+	padding: 2px 4px;
+}
+.helios_quicklogin input[type="password"] {
+	margin-left: 6px;
+}
+.helios_quicklogin label {
+	display: block;
+	text-align: right;
+	white-space: nowrap;
 }

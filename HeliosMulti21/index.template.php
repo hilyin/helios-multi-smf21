@@ -299,6 +299,14 @@ function template_body_above()
 		echo '
 				<div class="helios_greeting">
 					', $txt['hello_guest'], ' <strong>', $txt['guest_title'], '</strong>. Please <a href="', $scripturl, '?action=login" onclick="return reqOverlayDiv(this.href, ', JavaScriptEscape($txt['login']), ', \'login\');">login</a>', $context['can_register'] ? ' or <a href="' . $scripturl . '?action=signup">register</a>' : '', '.
+					<form class="helios_quicklogin" action="', $scripturl, '?action=login2" method="post" accept-charset="', $context['character_set'], '">
+						<input type="text" name="user" size="12" placeholder="', $txt['username'], '" aria-label="', $txt['username'], '" autocomplete="username" required>
+						<input type="password" name="passwrd" size="12" placeholder="', $txt['password'], '" aria-label="', $txt['password'], '" autocomplete="current-password" required>
+						<input type="submit" value="', $txt['login'], '" class="button">
+						<label><input type="checkbox" name="cookieneverexp" checked> Stay logged in</label>
+						<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
+						<input type="hidden" name="', $context['login_token_var'], '" value="', $context['login_token'], '">
+					</form>
 				</div>';
 	else
 		echo '
@@ -601,6 +609,10 @@ function helios_menu_buttons()
 		foreach ($buttons as $key => $button)
 			if (!isset($extra[$key]))
 				$buttons[$key]['active_button'] = false;
+
+	// Calendar is a plain link like in 2.0 (no hover sub-menu); Post Event is on the calendar page.
+	if (isset($buttons['calendar']))
+		$buttons['calendar']['sub_buttons'] = array();
 
 	return $buttons;
 }

@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.1.1 (2026-10-25)
+
+### Removed
+- **Upcoming Events line** above the board index, and its theme setting. It was a forum-specific
+  addition in the 2.0 theme this port was taken from, not part of Bloc's Helios Multi.
+
+### 2.0 behaviour restored
+- **Forum Stats** box in the Info Center has a "[More Stats]" link again.
+- **Guest login in the header:** username and password boxes, a Log in button and "Stay logged in"
+  (ticked by default) under the welcome line.
+- **Calendar menu button** is a plain link, without 2.1's hover sub-menu. "Post Event" is still on
+  the calendar page.
+
+### Fixed
+- **Calendar grid:** days no longer alternate in a checkerboard (2.1's `.windowbg:nth-of-type`
+  striping hit the day cells), and every day border is the same colour.
+
 ## 2.1.0 (2026-10-22): SMF 2.1 port
 
 First release for SMF 2.1, ported from Helios Multi 2.0 for SMF 2.0 (Bloc, 2011; theme id
@@ -27,16 +44,11 @@ First release for SMF 2.1, ported from Helios Multi 2.0 for SMF 2.0 (Bloc, 2011;
   - Collapse arrow for the header.
   - ` | `-separated link tree.
   - Left-hand sidebar menu on admin, profile and personal-message pages.
-  - Big red "Upcoming Events:" line above the board index.
 
 ### New in the port
 - **Menu bar at narrow widths:** the menu wraps onto a second row inside the menu box from 561px
   up, instead of spilling over the content below. The ` | ` separators sit between items only,
   never at the start or end of a row, and the ≤560px mobile popup has none.
-- **Upcoming Events line:** only today's events are large and underlined, as in 2.0. Event links
-  stay red after being visited, and the edit link is a ⚔️ icon, sized up for today's events.
-- **Theme settings:**
-  - an optional extra main-menu link (text and URL) for logged-in members
-  - which membergroups see the Upcoming Events line
+- **Theme settings:** an optional extra main-menu link (text and URL) for logged-in members.
 - **Icons:** links the forum's `favicon.png` and `apple-touch-icon.png` if they exist in the forum root.
 - **Credits:** Bloc's copyright notice and `licence.txt` kept, and the footer credit links to it.

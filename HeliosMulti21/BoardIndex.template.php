@@ -59,25 +59,7 @@ function template_newsfader()
  */
 function template_main()
 {
-	global $context, $txt, $scripturl, $user_info, $settings;
-
-	// Helios: upcoming events in big red text above the board list, as in the 2.0 theme.
-	// Theme setting helios_events_groups (comma-separated group IDs) limits it to admins + those groups;
-	// empty shows it to everyone who can see the calendar, as the 2.0 theme did.
-	$helios_groups = array_filter(array_map('intval', explode(',', $settings['helios_events_groups'] ?? '')));
-	if (!empty($context['calendar_events']) && (empty($helios_groups) || $user_info['is_admin'] || array_intersect($helios_groups, $user_info['groups'])))
-	{
-		echo '
-	<p class="helios_events">
-		<span class="event">', $context['calendar_only_today'] ? $txt['events'] : $txt['events_upcoming'], '</span> ';
-
-		foreach ($context['calendar_events'] as $event)
-			echo '
-		', $event['can_edit'] ? '<a href="' . $event['modify_href'] . '" title="' . $txt['calendar_edit'] . '"><span class="helios_sword' . ($event['is_today'] ? ' today' : '') . '">&#9876;&#65039;</span></a> ' : '', $event['href'] == '' ? '' : '<a href="' . $event['href'] . '">', $event['is_today'] ? '<strong>' . $event['title'] . '</strong>' : $event['title'], $event['href'] == '' ? '' : '</a>', $event['is_last'] ? '' : ', ';
-
-		echo '
-	</p>';
-	}
+	global $context, $txt, $scripturl;
 
 	// Helios: the board list sits in a pod and ends in the board-bottom strip.
 	echo '
@@ -504,6 +486,7 @@ function template_ic_block_stats()
 			<p class="inline">
 				', $context['common_stats']['boardindex_total_posts'], '', !empty($settings['show_latest_member']) ? ' - ' . $txt['latest_member'] . ': <strong> ' . $context['common_stats']['latest_member']['link'] . '</strong>' : '', '<br>
 				', (!empty($context['latest_post']) ? $txt['latest_post'] . ': <strong>&quot;' . $context['latest_post']['link'] . '&quot;</strong>  (' . $context['latest_post']['time'] . ')<br>' : ''), '
+				<a href="', $scripturl, '?action=stats">', $txt['more_stats'], '</a><br>
 				<a href="', $scripturl, '?action=recent">', $txt['recent_view'], '</a>
 			</p>';
 }
