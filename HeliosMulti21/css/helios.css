@@ -1019,7 +1019,7 @@ li.avatar:has(img[src$="/avatars/default.png"]) {
 	width: 9em;
 	padding: 2px 4px;
 }
-.helios_quicklogin input[type="password"] {
+.helios_quicklogin input[type="password"], .helios_quicklogin input[type="submit"] {
 	margin-left: 6px;
 }
 .helios_quicklogin label {

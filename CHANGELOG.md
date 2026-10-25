@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.3 (2026-10-25)
+
+### Fixed
+- **Header login spacing:** the Log in button now has the same gap after the password field as
+  the one between the username and password fields.
+
 ## 2.1.2 (2026-10-25)
 
 ### Fixed
