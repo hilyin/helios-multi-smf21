@@ -168,7 +168,7 @@ function template_html_above()
 
 	echo '
 	<title>', $context['page_title_html_safe'], '</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">';
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">';
 
 	// Content related meta tags, like description, keywords, Open Graph stuff, etc...
 	foreach ($context['meta_tags'] as $meta_tag)

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.4 (2026-10-26)
+
+### Fixed
+- **iPhone zoomed in on page load:** Safari focused the header login's username field as the page
+  loaded and zoomed in. The viewport tag now has `maximum-scale=1`, which stops that.
+
 ## 2.1.3 (2026-10-25)
 
 ### Fixed
