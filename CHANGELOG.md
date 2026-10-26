@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.5 (2026-10-26)
+
+### Fixed
+- **Footer on phones:** the footer lines are centered instead of right-aligned, and the footer text
+  sits vertically centered in its bar.
+
 ## 2.1.4 (2026-10-26)
 
 ### Fixed

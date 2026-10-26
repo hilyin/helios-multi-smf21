@@ -975,6 +975,10 @@ li.avatar:has(img[src$="/avatars/default.png"]) {
 		margin: 0;
 		display: block;
 	}
+	#footer .helios_footer_text .floatright, #footer .helios_footer_text .copyright, #footer .helios_footer_text p {
+		float: none;
+		text-align: center;
+	}
 }
 
 #upshrink_stats {
@@ -987,6 +991,12 @@ li.avatar:has(img[src$="/avatars/default.png"]) {
 #footer .helios_footer_text {
 	position: relative;
 	top: 6px;
+}
+/* Phones: the footer is a flat bar with even padding, so no nudge down onto the strip image. */
+@media (max-width: 720px) {
+	#footer .helios_footer_text {
+		top: 0;
+	}
 }
 
 /* Long (logged-in) menus wrap to a second row below ~1060px. Let the bar grow with them: menuback.gif is

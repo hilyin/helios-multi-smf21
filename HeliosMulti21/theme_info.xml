@@ -6,7 +6,7 @@
 	     BSD license: see licence.txt. Ported to SMF 2.1 by hilyin in 2026
 	     (https://github.com/hilyin/helios-multi-smf21). -->
 	<author name="Bloc">bloczone@gmail.com</author>
-	<version>2.1.4</version>
+	<version>2.1.5</version>
 	<install for="2.1 - 2.1.99" />
 	<layers>html,body</layers>
 	<templates>index</templates>
