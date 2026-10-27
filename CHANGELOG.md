@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.6 (2026-10-27)
+
+### Fixed
+- **Link tree (breadcrumb):** the text sat low on the strip's dark bottom edge and was very small
+  (8pt). It is now 12px and vertically centred in the strip's raised band. It stays on one line;
+  a long topic title ends in "…" instead of overflowing. The stock SMF float/margin rules that
+  pushed the text down are reset.
+- **Link tree on phones:** 13px, wraps onto a second line, and the dividers come after each item,
+  so a wrapped line never starts with "|".
+- **Bottom link tree** on board and topic pages (inside the content) is plain text instead of a
+  second copy of the strip image.
+
 ## 2.1.5 (2026-10-26)
 
 ### Fixed

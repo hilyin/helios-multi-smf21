@@ -275,19 +275,28 @@ h1.forumtitle {
 	color: var(--helios-hover);
 }
 
-/* ---------- Link tree in the board strip ---------- */
+/* ---------- Link tree in the board strip ----------
+   The strip image is 54px tall: a raised band (rows ~6-41) over a dark 12px
+   foot. The text is centred in the raised band on one line; a long topic
+   title is cut with an ellipsis. Phones get a flat bar that wraps (see the
+   720px block). The generated index.css floats the items and nudges spans
+   and links up and down with margins; all of that is reset here. */
 .navigate_section {
+	float: none;
+	width: auto;
 	padding: 0;
 	margin: 0;
 	background: transparent;
 }
 .navigate_section ul {
 	display: flex;
-	align-items: flex-end;
+	flex-wrap: nowrap;
+	align-items: center;
 	height: 54px;
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0 0 6px;
+	padding: 0 0 8px;
+	overflow: hidden;
 	background: transparent;
 	border: none;
 	border-style: solid;
@@ -296,18 +305,51 @@ h1.forumtitle {
 	border-image-repeat: stretch;
 	border-radius: 0;
 	box-shadow: none;
-	font: 8pt helvetica, arial, sans-serif;
+	font: 12px/1.4 helvetica, arial, sans-serif;
 }
-.navigate_section ul li, .navigate_section ul li a, .navigate_section ul li a:visited {
+.navigate_section ul li {
+	float: none;
+	flex: none;
+	padding: 0;
+	line-height: inherit;
+	white-space: nowrap;
 	color: #e0e0e0;
-	font-size: 8pt;
 	text-shadow: none;
+}
+.navigate_section ul li.last {
+	flex: 0 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.navigate_section ul li a, .navigate_section ul li em, .navigate_section ul li span,
+.navigate_section ul li .board_moderators a {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+.navigate_section ul li a, .navigate_section ul li a:visited {
+	color: #e0e0e0;
 }
 .navigate_section ul li a:hover {
 	color: var(--helios-hover);
 }
 .navigate_section ul li .dividers {
 	color: var(--helios-muted);
+	font: inherit;
+	padding: 0 .25em;
+}
+.navigate_section ul li .board_moderators {
+	color: var(--helios-muted);
+	margin-left: .4em;
+}
+/* The second copy at the bottom of board and topic pages sits inside the pod:
+   plain text there, no strip image. */
+#main_content_section .navigate_section ul {
+	height: auto;
+	padding: 6px 0;
+	border: none;
+	border-image: none;
 }
 
 /* ---------- Content area ---------- */
@@ -969,6 +1011,26 @@ li.avatar:has(img[src$="/avatars/default.png"]) {
 @media (max-width: 720px) {
 	.navigate_section ul, #helios_boardbottom, #helios_ic_strip, #footer {
 		height: auto;
+	}
+	/* Flat bar: let the link tree wrap instead of cutting the topic title. */
+	.navigate_section ul {
+		flex-wrap: wrap;
+		padding: 7px 10px;
+		font-size: 13px;
+	}
+	.navigate_section ul li, .navigate_section ul li.last {
+		white-space: normal;
+		overflow: visible;
+	}
+	/* Divider after each item instead of before it, so a wrapped line never starts with "|". */
+	.navigate_section ul li .dividers {
+		display: none;
+	}
+	.navigate_section ul li:not(.last)::after {
+		content: "|";
+		color: var(--helios-muted);
+		/* less on the left: the template leaves a space before </li> */
+		padding: 0 .4em 0 .1em;
 	}
 	#footer .helios_footer_text {
 		height: auto;
